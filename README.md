@@ -16,7 +16,7 @@ Although the javascript code is simple in structure, there are parts of it that 
 
 [Link to GitHub repository](https://github.com/AtlantaBlack/HW05_Work_Day_Scheduler)
 
-![Screenshot of Code Quiz](assets/images/screenshot-code-quiz.jpg?raw=true "Javascript Code Quiz screenshot")
+![Screenshot of Work Day Scheduler](/assets/images/scheduler-screenshot.jpg?raw=true "Work Day Scheduler screenshot")
 
 ---
 
