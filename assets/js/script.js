@@ -1,9 +1,12 @@
 // javascript
 
-// TIME DISPLAY
+// DATE & TIME DISPLAY
+
+// make the date display
 var today = moment().format("dddd, Do MMM YYYY [at] h:mm:ss a");
 $("#currentDay").text(today);
 
+// make the time display count up
 setInterval(function() {
         $("#currentDay").text(moment().format("dddd, Do MMM YYYY [at] h:mm:ss a"));
     }, 1000);
@@ -11,50 +14,81 @@ setInterval(function() {
 
 // TIME BLOCKS
 
+// textbox colour change function
 function pastPresentOrFuture() {
+    // grab the DOM element with the class name 'time-block'
     var timeBlock = $(".time-block");
-    var textarea = $(".description");
+    // set variable for current hour using moment.hour
     var currentTime = moment().hour();
 
+    // begin a jquery for-each loop
     timeBlock.each(function() {
-        var hourBlock = parseInt($(this).attr("id").split("hour-")[0]);
+        // for each time-block div, target 'THIS' element
 
-        // textarea.addClass("past present future");
+        // grab the ID attribute of 'THIS', split it from 'hour-' into an array containing "hour-" and "num (9, 10, etc)"
+        // new array made from string split: [ "hour-", "num" ]
 
+        // use the second index [1] which is the number, parse it from a string state into a useable number
+
+        // now each hour block is assigned a unique and useable number to test conditions against
+        var hourBlock = parseInt($(this).attr("id").split("hour-")[1]);
+
+        // if the hour block number is under current hour
         if (hourBlock < currentTime) {
-            textarea.addClass("past");
-            textarea.removeClass("present");
-            textarea.removeClass("future");
+            // add class "past", remove "present" and "future"
+            $(this).addClass("past");
+            $(this).removeClass("present");
+            $(this).removeClass("future");
 
+            console.log("< hour/time " + hourBlock, currentTime);
+
+        // if the hour block number is equal to the current hour
         } else if (hourBlock === currentTime) {
-            textarea.removeClass("past");
-            textarea.addClass("present");
-            textarea.removeClass("future");
+            // add class "present", remove "past" and "future"
+            $(this).removeClass("past");
+            $(this).addClass("present");
+            $(this).removeClass("future");
+        
+            console.log("= hour/time " + hourBlock, currentTime);
 
-        } else if (hourBlock > currentTime) {
-            textarea.removeClass("past");
-            textarea.removeClass("present");
-            textarea.addClass("future");
+        // for everything else (basically hour block over current hour)
+        } else {
+            // add class "future", remove "past" and "present"
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+            $(this).addClass("future");
+
+            console.log("> hour/time " + hourBlock, currentTime);
         }
     });
 }
 
+// SAVE BUTTON
 
+// make save button variable
 var saveButton = $(".saveBtn");
+// clicking save button will activate 'save to local storage'
 saveButton.on("click", saveToLocalStorage);
 
-function saveToLocalStorage() {
-    // get value and time
-    var plans = $(this).siblings(".description").val();
-    var hour = $(this).parent().attr("id");
+// LOCAL STORAGE functions
 
-    // save in localStorage
+function saveToLocalStorage() {
+    // set variable to grab the hour id of saveButton's parent, which is "hour-9, hour-10, etc"
+    var hour = $(this).parent().attr("id");
+    // set variable to grab the VALUE coming from the class 'description', which is the textarea (sibling of saveButton)
+    var plans = $(this).siblings(".description").val();
+
+    // save in localStorage as hour + plans
+    // saves like this: "hour-9"(id): "text text"(.description)
     localStorage.setItem(hour, plans);
 }
 
 function retrieveFromLocalStorage() {
+    // for element ID hour-9 and associated description, grab key 'hour-9" from local storage
     $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+    // for element ID hour-10 and associated description, grab key 'hour-10" from local storage
     $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+    // continue for the rest of the hour blocks
     $("#hour-11 .description").val(localStorage.getItem("hour-11"));
     $("#hour-12 .description").val(localStorage.getItem("hour-12"));
     $("#hour-13 .description").val(localStorage.getItem("hour-13"));
@@ -64,12 +98,14 @@ function retrieveFromLocalStorage() {
     $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 }
 
-
 function init() {
+    // (1) retrieve any data from local Storage and populate planner
     retrieveFromLocalStorage();
+    // (2) change textarea box colour depending on current time
     pastPresentOrFuture();
 }
 
+// load the page
 init();
 
 
