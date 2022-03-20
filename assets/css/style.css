@@ -32,7 +32,7 @@ textarea {
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
+  height: 100px;
   border-top: 1px solid white;
 }
 
@@ -57,31 +57,33 @@ textarea {
   color: white;
 }
 
-.saveBtn {
+/* common styling for button */
+.saveBtn,
+.clearBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
   color: white;
 }
 
-/* increased size of icon when hovering on it */
-.saveBtn i:hover {
-  font-size: 30px;
+/* save button background colour */
+.saveBtn {
+  background-color: #06aed5;
+}
+
+/* clear button background colour */
+.clearBtn {
+  background-color: #ec0000;
+}
+
+/* make the whole button do this effect rather than only over the icon */
+.saveBtn:hover,
+.clearBtn:hover {
+  font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
 
-
-
-
-.border-blue {
-  border: 1px solid blue;
-}
-
-.border-red {
-  border: 1px dashed red;
-}
-
-.border-green {
-  border: 1px solid greenyellow;
+/* make the white-space normal as a custom style */
+.custom-row {
+  white-space: normal;
 }

@@ -63,12 +63,19 @@ function pastPresentOrFuture() {
     });
 }
 
-// SAVE BUTTON
 
-// make save button variable
+// BUTTONS (save & clear)
+
+// make save button
 var saveButton = $(".saveBtn");
-// clicking save button will activate 'save to local storage'
+// clicking save button will activate 'save to local storage', which saves hour ID and accompany text to local storage
 saveButton.on("click", saveToLocalStorage);
+
+// make clear button
+var clearButton = $(".clearBtn");
+// clicking this button will activate 'clear scheduled plan', which will remove the selected hour block from local storage thus clearing the text
+clearButton.on("click", clearScheduledPlan);
+
 
 // LOCAL STORAGE functions
 
@@ -98,6 +105,18 @@ function retrieveFromLocalStorage() {
     $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 }
 
+function clearScheduledPlan() {
+    // target clear Button's associated parent ID
+    var thisHour = $(this).parent().attr("id");
+    // remove from local storage the key with the same ID name as above
+    localStorage.removeItem(thisHour);
+    // update the textboxes by retrieving data from local storage
+    retrieveFromLocalStorage();
+}
+
+
+// INITIATE
+
 function init() {
     // (1) retrieve any data from local Storage and populate planner
     retrieveFromLocalStorage();
@@ -107,85 +126,3 @@ function init() {
 
 // load the page
 init();
-
-
-// ---- 
-
-
- // hours for work day
-// const workDay = [
-//     9, 10, 11, 12, 13, 14, 15, 16, 17
-// ]
-
-// loadPlanner();
-
-// // put the time blocks on the page
-// function loadPlanner() {
-
-//     // grab container to hold all the hours
-//     var planner = $(".container");
-//     // grab current hour using moment
-//     var currentHour = moment().hour();
-
-//     // jquery for each, use the workday array and its index + index value
-//     jQuery.each(workDay, function(i, value) {
-//         console.log([i] + " " + value);
-
-//         var hourArticle = $("<article>");
-//         hourArticle.addClass("row border-red");
-//         hourArticle.attr("id", "newID"); // <---- ?????
-//         planner.append(hourArticle)
-
-//         var hourBlock;
-//         var textInput;
-//         var saveButton;
-//         var icon;
-
-//         hourBlock = $("<section>");
-//         hourBlock.addClass("col-2 border-green");
-//         hourBlock.text(moment(value, "H").format("h A"));
-//         hourArticle.append(hourBlock);
-
-//         textInput = $("<textarea>");
-//         textInput.addClass("col-8 border-green");
-//         hourArticle.append(textInput);
-
-//         if (value < currentHour) {
-//             textInput.addClass("past");
-//         } else if (value === currentHour) {
-//             textInput.addClass("present");
-//         } else {
-//             textInput.addClass("future");
-//         }
-
-//         saveButton = $("<button>");
-//         saveButton.addClass("col-2 saveBtn border-green");
-//         saveButton.on("click", saveAndUpdate);
-
-//         icon = $("<i>");
-//         icon.addClass("fas fa-save");
-//         saveButton.append(icon);
-//         hourArticle.append(saveButton);
-
-//         planner.append(hourArticle);
-//     });
-// }
-
-
-// function saveAndUpdate(event) {
-//     event.preventDefault();
-    
-//     // set item to storage
-//     // update item to storage
-//     // get item from storage
-// }
-
-// function saveToStorage() {
-//     var workDaySchedule = {
-        
-//     }
-// }
-
-
-
-
