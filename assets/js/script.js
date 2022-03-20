@@ -8,7 +8,6 @@ setInterval(function() {
         $("#currentDay").text(moment().format("dddd, Do MMM YYYY [at] h:mm:ss a"));
     }, 1000);
 
-// --- 
 
 // TIME BLOCKS
 
@@ -18,21 +17,31 @@ function pastPresentOrFuture() {
     var currentTime = moment().hour();
 
     timeBlock.each(function() {
-        var hourBlock = parseInt($(this).attr("id").split("hour-")[1]);
+        var hourBlock = parseInt($(this).attr("id").split("hour-")[0]);
 
-    if (hourBlock < currentTime) {
-        textarea.addClass("past");
-    } else if (hourBlock === currentTime) {
-        textarea.addClass("present");
-    } else {
-        textarea.addClass("future");
-    }
+        // textarea.addClass("past present future");
 
+        if (hourBlock < currentTime) {
+            textarea.addClass("past");
+            textarea.removeClass("present");
+            textarea.removeClass("future");
+
+        } else if (hourBlock === currentTime) {
+            textarea.removeClass("past");
+            textarea.addClass("present");
+            textarea.removeClass("future");
+
+        } else if (hourBlock > currentTime) {
+            textarea.removeClass("past");
+            textarea.removeClass("present");
+            textarea.addClass("future");
+        }
     });
 }
 
 
 var saveButton = $(".saveBtn");
+saveButton.on("click", saveToLocalStorage);
 
 function saveToLocalStorage() {
     // get value and time
@@ -54,8 +63,6 @@ function retrieveFromLocalStorage() {
     $("#hour-16 .description").val(localStorage.getItem("hour-16"));
     $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 }
-
-saveButton.on("click", saveToLocalStorage);
 
 
 function init() {
