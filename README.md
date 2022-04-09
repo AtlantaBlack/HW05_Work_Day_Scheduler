@@ -1,4 +1,4 @@
-# BCS HW 05 - Work Day Scheduler
+# Work Day Scheduler
 
 ## Description
 
@@ -6,17 +6,33 @@ Schedulers are helpful tools for planning the day, figuring out workflow, and ge
 
 This scheduler was built using jQuery and Bootstrap, and utilises Moment.js for time keeping and Web APIs for storing and retrieving the data. Users are able to type in their tasks for each hour and save it to their browser, which will display their tasks even upon page refresh. Each hour block will change colour depending whether the hour has passed over the current time, or is still yet to come.
 
-Although the javascript code is simple in structure, there are parts of it that were difficult to put together and to understand the workings of (at least, to a new developer). 
+---
+
+## Technologies Used
+
+This application was built using: 
+
+* HTML
+
+* CSS (Bootstrap)
+
+* Javascript (jQuery and Moment.js)
+
+* Web Browser APIs (Local Storage)
 
 ---
 
 ## Usage
 
-[Link to deployed application via GitHub Pages](https://atlantablack.github.io/HW05_Work_Day_Scheduler/)
+[Link to deployed application via GitHub Pages](https://atlantablack.github.io/Work_Day_Scheduler/)
 
-[Link to GitHub repository](https://github.com/AtlantaBlack/HW05_Work_Day_Scheduler)
+[Link to GitHub repository](https://github.com/AtlantaBlack/Work_Day_Scheduler)
 
-![Screenshot of Work Day Scheduler](/assets/images/scheduler-screenshot.jpg?raw=true "Work Day Scheduler screenshot")
+---
+
+## Screenshots of Application
+
+![Screenshot of Work Day Scheduler](assets/images/screenshot-scheduler.jpg?raw=true "Work Day Scheduler screenshot")
 
 ---
 
@@ -36,10 +52,6 @@ Although the javascript code is simple in structure, there are parts of it that 
 
 [Google Fonts](https://fonts.google.com/)
 
-AskBCS Learning Assistant
-
-Class Notes and fellow students
-
 ---
 
 ## License
@@ -47,3 +59,9 @@ Class Notes and fellow students
 © 2022 Sushan Yue
 
 [MIT License](/LICENSE.txt)
+
+---
+
+## Contact
+
+[Sushan Yue @ GitHub](https://github.com/AtlantaBlack)
