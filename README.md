@@ -25,12 +25,17 @@ This application was built using:
 ## Usage
 
 [Link to deployed application via GitHub Pages](https://atlantablack.github.io/Work_Day_Scheduler/)
+<<<<<<< HEAD
 
 [Link to GitHub repository](https://github.com/AtlantaBlack/Work_Day_Scheduler)
 
 ---
 
 ## Screenshots of Application
+=======
+
+[Link to GitHub repository](https://github.com/AtlantaBlack/Work_Day_Scheduler)
+>>>>>>> f55d8aeff7f7f61208a1c7cf44510780f33cb622
 
 ![Screenshot of Work Day Scheduler](assets/images/screenshot-scheduler.jpg?raw=true "Work Day Scheduler screenshot")
 
