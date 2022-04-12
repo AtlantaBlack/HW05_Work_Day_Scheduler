@@ -36,6 +36,12 @@ This application was built using:
 
 ---
 
+# Demo
+
+![Demo of Work Day Scheduler](assets/images/demo-work-day-scheduler.gif?raw=true "Work Day Scheduler demo")
+
+---
+
 ## Resources
 
 [W3 Schools - jQuery](https://www.w3schools.com/jquery/default.asp)
